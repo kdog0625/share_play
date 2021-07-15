@@ -24,7 +24,7 @@
 }
 
 .top {
-  background: url(/images/share-top.jpg?aa0c5db17ca78c79e667989fd2d53c78) no-repeat center center/cover;
+  background: url(../../../public/images/top/share-top.jpg) no-repeat center center/cover;
   height: 853px;
   position: relative;
 }
