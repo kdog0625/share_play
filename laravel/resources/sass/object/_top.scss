@@ -1,0 +1,13 @@
+.top {
+    background: url(../../../public/images/top/share-top.jpg) no-repeat center center / cover;
+    height: 853px;
+    position: relative;
+}
+
+.top-visual {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width: 100%;
+}
