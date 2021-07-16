@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//デフォルトのルーティング
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+//シェアハウス一覧ページをトップページに設定
+Route::get('/', 'SharesController@index');

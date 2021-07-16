@@ -1,0 +1,26 @@
+.navbar-header {
+    padding: 20px 0;
+}
+
+.nav-logo {
+    width: 205px;
+    height: 30px;
+}
+
+.nav-item {
+    @include mq(pc) {
+        & + & {
+            margin-left: 40px;
+        }
+    }
+}
+
+.nav-flex {
+    @include mq(sp) {
+        text-align: center;
+    }
+}
+
+.navbar-toggler-icon {
+    background-color: #000;
+}
