@@ -13,4 +13,8 @@ class SharesController extends Controller
         $shares = Share::all()->sortByDesc('created_at');
         return view('shares.index', ['shares' => $shares]);
     }
+
+    public function create() {
+        return view('shares.create');
+    }
 }
