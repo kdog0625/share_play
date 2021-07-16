@@ -1,0 +1,27 @@
+.shares-main {
+    width: 100%;
+}
+
+.shares-item {
+    margin-bottom: 50px;
+    img {
+        width: 100%;
+    }
+    &-text {
+        padding: 10px;
+        &-title {
+            display: flex;
+            flex-flow: column;
+            &-big {
+                font-size: 32px;
+            }
+            &-small {
+                font-size: 20px;
+                padding: 10px 0;
+            }
+        }
+        &-desc {
+            border-top: dashed 3px #90bc52;
+        }
+    }
+}

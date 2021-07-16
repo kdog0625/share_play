@@ -1,0 +1,16 @@
+$layout-width-inner: 1200px;
+
+$breakpoints: (
+  //キー値
+  'sp': '(max-width: 992px)', //767px以下（スマホ）用の表示
+  'pc': 'screen and (min-width: 992px)' //768px以上（PC）用の表示
+);
+
+//メディアクエリ用のmixinを定義。デフォ値はmd
+@mixin mq($breakpoint: md) {
+  //map-get(マップ型変数, キー)で値を取得
+    @media #{map-get($breakpoints, $breakpoint)} {
+      //この中をカスタムできる。@inclideの中身を格納。
+      @content;
+    }
+  }
