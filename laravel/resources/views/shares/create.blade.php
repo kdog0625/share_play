@@ -10,6 +10,7 @@
         <div class="container">
             <div class="shares-create" enctype="multipart/form-data">
                 <form method="POST" action="{{ route('shares.store') }}" class="shares-create-form">
+                    @csrf
                     <dl class="shares-create-list">
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title mb-3">シェアハウス名</dt>
@@ -74,13 +75,13 @@
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">市区町村</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="shara_name" placeholder="市区町村">
+                                <input class="js-require" type="text" name="municipality_name" placeholder="市区町村">
                             </dd>
                         </div>
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">補足住所</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="municipality_name" placeholder="補足住所">
+                                <input class="js-require" type="text" name="supplementary_address" placeholder="補足住所">
                             </dd>
                         </div>
                         <div class="shares-create-item">
@@ -100,10 +101,10 @@
                             <dd class="shares-create-item-input">
                                 <select name="exchange_about" id="js-require">
                                     <option value="-" selected>選択してください</option>
-                                    <option value="日本人との交流が多い">日本人との交流が多い</option>
-                                    <option value="外国人との交流が多い">外国人との交流が多い</option>
-                                    <option value="挨拶程度の交流">挨拶程度の交流</option>
-                                    <option value="ほとんど交流なし">ほとんど交流なし</option>
+                                    <option value=1>1</option>
+                                    <option value=2>2</option>
+                                    <option value=3>3</option>
+                                    <option value=4>4</option>
                                 </select>
                             </dd>
                         </div>
@@ -114,11 +115,17 @@
                             </dd>
                         </div>
                         <div class="shares-create-item">
+                            <dt class="shares-create-item-title">マネージャーID</dt>
+                            <dd class="shares-create-item-input">
+                                <input class="js-require" type="text" name="admin_users_id" placeholder="築年数">
+                            </dd>
+                        </div>
+                        <div class="shares-create-item">
                             <dt class="shares-create-item-title">個室</dt>
                             <dd class="shares-create-item-input">
                                 <select name="private_room" id="js-require">
                                     <option value="-" selected>選択してください</option>
-                                    <option value="4畳">4畳</option>
+                                    <option value=4>4</option>
                                     <option value="4.5畳">4.5畳</option>
                                     <option value="5畳">5畳</option>
                                     <option value="5.5畳">5.5畳</option>
@@ -146,7 +153,7 @@
                             <dd class="shares-create-item-input">
                                 <select name="dormitory_room" id="js-require">
                                     <option value="-" selected>選択してください</option>
-                                    <option value="4畳">4畳</option>
+                                    <option value=4>4</option>
                                     <option value="4.5畳">4.5畳</option>
                                     <option value="5畳">5畳</option>
                                     <option value="5.5畳">5.5畳</option>
@@ -165,7 +172,7 @@
                                     <option value="12畳">12畳</option>
                                     <option value="12.5畳">12.5畳</option>
                                     <option value="13畳以上">13畳以上</option>
-                                    <option value="個室なし">個室なし</option>
+                                    <option value="ドミトリーなし">ドミトリーなし</option>
                                 </select>
                             </dd>
                         </div>
@@ -184,7 +191,7 @@
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">友人の宿泊に対する条件</dt>
                             <dd class="shares-create-item-input">
-                                <select name="friend-desc" id="js-require">
+                                <select name="friend_desc" id="js-require">
                                     <option value="-" selected>選択してください</option>
                                     <option value="あり">あり</option>
                                     <option value="なし">なし</option>
