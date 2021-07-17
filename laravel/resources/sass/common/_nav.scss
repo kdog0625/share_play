@@ -8,7 +8,12 @@
 }
 
 .nav-item {
-    @include mq(pc) {
+    @include mq(xl) {
+        & + & {
+            margin-left: 40px;
+        }
+    }
+    @include mq(lg) {
         & + & {
             margin-left: 40px;
         }
@@ -16,7 +21,10 @@
 }
 
 .nav-flex {
-    @include mq(sp) {
+    @include mq(md) {
+        text-align: center;
+    }
+    @include mq(sm) {
         text-align: center;
     }
 }

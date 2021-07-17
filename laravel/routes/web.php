@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 
 //シェアハウス一覧ページをトップページに設定
-Route::get('/', 'SharesController@index');
+Route::get('/', 'SharesController@index')->name('shares.index');
+Route::resource('/shares', 'SharesController')->except(['index']);

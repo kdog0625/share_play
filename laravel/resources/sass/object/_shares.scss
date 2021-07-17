@@ -1,5 +1,6 @@
-.shares-main {
-    width: 100%;
+.shares-content {
+    padding-top: 120px;
+    padding-bottom: 120px;
 }
 
 .shares-item {
@@ -25,3 +26,91 @@
         }
     }
 }
+
+.shares-create-item {
+    & + & {
+        margin-top: 40px;
+    }
+    &-title {
+
+    }
+    &-input {
+        [type="text"],[type="email"] {
+            appearance: none;
+            background-color: transparent;
+            background-image: none;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            border-radius: 0;
+            padding: 20px 10px;
+            @include mq(xl) {
+                width: 70%;
+            }
+            @include mq(lg) {
+                width: 70%;
+            }
+            @include mq(md) {
+                width: 100%;
+            }
+            @include mq(sm) {
+                width: 100%;
+            }
+        }
+        select {
+            appearance: none;
+            border-radius: 0;
+            box-shadow: none;
+            border: 1px solid #707070;
+            padding: 20px 10px;
+            width: 100%;
+            @include mq(xl) {
+                width: 40%;
+            }
+            @include mq(lg) {
+                width: 40%;
+            }
+            @include mq(md) {
+                width: 100%;
+            }
+            @include mq(sm) {
+                width: 100%;
+            }
+        }
+        textarea {
+            appearance: none;
+            //大きさの調節を不可能にする。
+            resize: none;
+            height: 240px;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            @include mq(xl) {
+                width: 70%;
+            }
+            @include mq(lg) {
+                width: 70%;
+            }
+            @include mq(md) {
+                width: 100%;
+            }
+            @include mq(sm) {
+                width: 100%;
+            }
+        }
+    }
+    //.share-select {
+    //    position: relative;
+    //    &::after {
+    //        border-bottom: solid 2px #3e3e3e;
+    //        border-right: solid 2px #3e3e3e;
+    //        content: '';
+    //        display: block;
+    //        height: 8px;
+    //        position: absolute;
+    //        right: 4%;
+    //        top: 45%;
+    //        transform: rotate(45deg);
+    //        width: 8px;
+    //    }
+    //}
+}
+
+.shares-create-item-input {}
+
