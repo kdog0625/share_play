@@ -18,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-
+Auth::routes();
 //シェアハウス一覧ページをトップページに設定
 Route::get('/', 'SharesController@index')->name('shares.index');
-Route::resource('/shares', 'SharesController')->except(['index']);
+Route::resource('/users', 'UserController')->middleware('auth');
+Route::resource('/shares', 'SharesController')->except(['index'])->middleware('auth');;
+
+
