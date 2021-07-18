@@ -1,0 +1,60 @@
+.shares-user-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+//.shares-user-container {
+//    position: absolute;
+//    top: 50%;
+//    left: 50%;
+//    transform: translateY(-50%) translateX(-50%);
+//}
+
+.users-header {
+    background-color: white;
+    font-size: 24px;
+}
+
+.user-border {
+    padding: 0 15px;
+}
+
+.user-tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.user-border-right {
+    border-right: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.user-input {
+    [type="text"],[type="email"],[type="password"] {
+        appearance: none;
+        background-color: transparent;
+        background-image: none;
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        border-radius: 0;
+        padding: 20px 10px;
+        @include mq(xl) {
+            width: 70%;
+        }
+        @include mq(lg) {
+            width: 70%;
+        }
+        @include mq(md) {
+            width: 100%;
+        }
+        @include mq(sm) {
+            width: 100%;
+        }
+    }
+}
+
+.login-padding {
+    padding: 45px;
+}
+
+.login-rm {
+    padding-right: 15px;
+}
