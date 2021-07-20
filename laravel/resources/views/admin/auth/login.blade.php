@@ -38,11 +38,11 @@
 
                                 <div class="form-group row mb-3 align-items-center">
                                     <div class="password-login">
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            パスワードを忘れた場合
-                                        </a>
-                                    @endif
+                                        @if (Route::has('password.request'))
+                                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                パスワードを忘れた場合
+                                            </a>
+                                        @endif
                                     </div>
                                     <div class="form-check ml-auto login-rm">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
