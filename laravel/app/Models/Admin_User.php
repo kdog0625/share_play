@@ -8,7 +8,8 @@ use Illuminate\Notifications\Notifiable;
 
 class Admin_User extends Authenticatable
 {
-    use Notifiable;
+    use HasFactory, Notifiable;
+    protected $table = 'admin_users';
     protected $guard = 'admin';
 
     protected $fillable = [
@@ -18,5 +19,8 @@ class Admin_User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    use HasFactory;
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
