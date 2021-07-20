@@ -16,27 +16,37 @@
                     <a class="nav-link" href="#">入居者の声</a>
                 </li>
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">新規登録</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
-                    </li>
-                @endguest
 
-                @auth
+                @endguest
+                @if(Auth::guard('admin')->check())
                     <li class="nav-item">
-                        <button class="nav-link" href="#">マイページ</button>
+                        <a class="nav-link" href="{{ route('register') }}">管理者ページ</a>
                     </li>
-                @endauth
-                @auth
                     <li class="nav-item">
                         <button form="logout-button" class="nav-link">ログアウト</button>
                     </li>
                     <form id="logout-button" method="POST" action="{{ route('logout') }}">
                         @csrf
                     </form>
-                @endauth
+
+                @elseif(Auth::check())
+                    <li class="nav-item">
+                        <button class="nav-link" href="#">マイページ</button>
+                    </li>
+                    <li class="nav-item">
+                        <button form="logout-button" class="nav-link">ログアウト</button>
+                    </li>
+                    <form id="logout-button" method="POST" action="{{ route('logout') }}">
+                        @csrf
+                    </form>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">新規登録</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
