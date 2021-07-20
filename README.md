@@ -20,11 +20,6 @@
 - PHP : 8.0.8
 
 ```bash
-cp .env.example .env
-
-# Edit for your environment
-vi .env
-
 docker-compose build
 docker-compose up
 ```
