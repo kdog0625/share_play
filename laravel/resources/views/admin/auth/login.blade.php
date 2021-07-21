@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('common/nav')
+    @include('common.users.nav')
 
     <div class="shares-content">
         <div class="container">

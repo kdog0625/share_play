@@ -4,12 +4,12 @@
 
 @section('content')
 
-    @include('common/nav')
+    @include('common.users.nav')
 
     <div class="shares-content">
         <div class="container">
             <div class="card">
-                <div class="card-header users-header">会員登録</div>
+                <div class="card-header users-header">管理者登録</div>
 
                 <div class="card-body user-border">
                     <form method="POST" action="{{ route('admin.register') }}">
