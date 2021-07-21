@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -47,5 +48,10 @@ class LoginController extends Controller
 
     protected function guard(){
         return Auth::guard('admin');
+    }
+
+    protected function loggedOut(Request $request)
+    {
+        return redirect(route('admin.login'));
     }
 }
