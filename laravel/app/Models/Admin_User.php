@@ -13,7 +13,22 @@ class Admin_User extends Authenticatable
     protected $guard = 'admin';
 
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'share_admin_id',
+        'name_kanji1',
+        'name_kanji2',
+        'name_kana1',
+        'name_kana2',
+        'birth_day',
+        'age',
+        'sex',
+        'area_country',
+        'prefecture_name',
+        'tel',
+        'profile_image',
+        'profile_text',
+        'email',
+        'password',
     ];
 
     protected $hidden = [
