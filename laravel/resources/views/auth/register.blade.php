@@ -199,7 +199,7 @@
                         <div class="form-group row mb-3">
                             <div class="col-md-12 d-flex align-items-center">
                                 <button class="btn btn-block reg-color text-white p-3 mt-3 col-md-5" type="submit">新規会員登録</button>
-                                <a href="#" class="btn btn-default btn-block login-color text-white p-3 mt-3 ml-auto col-md-5">
+                                <a href="{{ route('login') }}" class="btn btn-default btn-block login-color text-white p-3 mt-3 ml-auto col-md-5">
                                     ログインはこちら
                                 </a>
                             </div>
