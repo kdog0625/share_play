@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('common/nav')
+    @include('common.users.nav')
 
     @include('shares/top')
 
@@ -22,6 +22,9 @@
                         </div>
                         <div class="shares-item-text-desc">
                             アクセス地域
+                            <a class="dropdown-item" href="{{ route("shares.edit", ['share' => $share]) }}">
+                                <i class="fas fa-pen mr-1"></i>記事を更新する
+                            </a>
                         </div>
                     </div>
                 @endforeach
