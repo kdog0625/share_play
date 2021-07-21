@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use App\Models\Share;
 
 class AdminHomeController extends Controller
 {
@@ -25,6 +25,7 @@ class AdminHomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $admin_shares = Share::all()->sortByDesc('created_at');
+        return view('admin.home', ['admin_shares'=>$admin_shares]);
     }
 }

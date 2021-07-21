@@ -4,14 +4,14 @@
 
 @section('content')
 
-    @include('common.users.nav')
+    @include('common.auth.nav')
 
     <div class="shares-content">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-8">
                     <div class="card login-padding">
-                        <div class="card-header users-header text-center">ログイン</div>
+                        <div class="card-header users-header text-center">管理者ログイン</div>
 
                         <div class="card-body user-border">
                             <form method="POST" action="{{ route('admin.login') }}">
