@@ -31,7 +31,7 @@
                                 <div class="row col-md-12">
                                     <th class="user-border-right col-md-3">ユーザーID</th>
                                     <td class="col-md-9 user-input">
-                                        <input id="share_user_id" type="text" class="form-control @error('share_user_id') is-invalid @enderror" name="share_user_id" value="{{ old('share_user_id') }}" required autocomplete="share_user_id" autofocus>
+                                        <input id="share_admin_id" type="text" class="form-control @error('share_admin_id') is-invalid @enderror" name="share_admin_id" value="{{ old('share_admin_id') }}" required autocomplete="share_admin_id" autofocus>
                                         @error('share_admin_id')
                                         <span class="invalid-feedback" role="alert">
                                         @enderror
