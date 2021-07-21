@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('common/nav')
+    @include('common.users.nav')
 
     <div class="shares-content">
         <div class="container">
@@ -14,7 +14,7 @@
                         <div class="card-header users-header text-center">ログイン</div>
 
                         <div class="card-body user-border">
-                            <form method="POST" action="{{ route('login') }}">
+                            <form method="POST" action="{{ route('admin.login') }}">
                                 @csrf
                                 <div class="md-form">
                                     <label for="email">メールアドレス</label>

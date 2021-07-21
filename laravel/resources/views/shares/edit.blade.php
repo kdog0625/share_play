@@ -5,17 +5,17 @@
 @section('content')
 
     @include('common.users.nav')
-
     <div class="shares-content">
         <div class="container">
             <div class="shares-create" enctype="multipart/form-data">
-                <form method="POST" action="{{ route('shares.store') }}" class="shares-create-form">
+                <form method="POST" action="{{ route('shares.update', ['share' => $share]) }}" class="shares-create-form">
+                    @method('PATCH')
                     @csrf
                     <dl class="shares-create-list">
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title mb-3">シェアハウス名</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="shara_name" placeholder="シェアハウス名">
+                                <input class="js-require" type="text" name="shara_name" placeholder="シェアハウス名" value="{{ $share->shara_name ?? old('shara_name') }}">
                             </dd>
                         </div>
                         <div class="shares-create-item">
