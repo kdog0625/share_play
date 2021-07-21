@@ -22,7 +22,7 @@ class SharesController extends Controller
     {
         $this->shares_create_colum($share, $request);
         $share->save();
-        return redirect()->route('shares.index');
+        return redirect()->route('admin.admin_home');
     }
 
     public function edit(Share $share)
