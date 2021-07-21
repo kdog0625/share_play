@@ -6,8 +6,6 @@ use App\Models\Share;
 
 use App\Http\Requests\ShareRequest;
 
-use Illuminate\Http\Request;
-
 class SharesController extends Controller
 {
     //シェアハウス一覧
@@ -22,7 +20,6 @@ class SharesController extends Controller
 
     public function store(ShareRequest $request, Share $share)
     {
-
         $this->shares_create_colum($share, $request);
         $share->save();
         return redirect()->route('shares.index');
@@ -37,7 +34,13 @@ class SharesController extends Controller
     {
         $this->shares_create_colum($share, $request);
         $share->save();
-        return redirect()->route('shares.index');
+        return redirect()->route('admin.admin_home');
+    }
+
+    public function destroy(Share $share)
+    {
+        $share->delete();
+        return redirect()->route('admins.home');
     }
 
     //シェアハウスを登録するデータのまとめ
