@@ -45,7 +45,7 @@ class SharesController extends Controller
 
     //シェアハウスを登録するデータのまとめ
     public function shares_create_colum($share, $request) {
-        $share->admin_users_id = $request->admin_users_id;
+        $share->admin_users_id = $request->user()->id;
         $share->shara_name = $request->shara_name;
         $share->prefecture_name = $request->prefecture_name;
         $share->municipality_name = $request->municipality_name;
