@@ -22,6 +22,26 @@ class SharesController extends Controller
 
     public function store(ShareRequest $request, Share $share)
     {
+
+        $this->shares_create_colum($share, $request);
+        $share->save();
+        return redirect()->route('shares.index');
+    }
+
+    public function edit(Share $share)
+    {
+        return view('shares.edit', ['share' => $share]);
+    }
+
+    public function update(ShareRequest $request, Share $share)
+    {
+        $this->shares_create_colum($share, $request);
+        $share->save();
+        return redirect()->route('shares.index');
+    }
+
+    //シェアハウスを登録するデータのまとめ
+    public function shares_create_colum($share, $request) {
         $share->admin_users_id = $request->admin_users_id;
         $share->shara_name = $request->shara_name;
         $share->prefecture_name = $request->prefecture_name;
@@ -39,7 +59,5 @@ class SharesController extends Controller
         $share->gender_ratio = $request->gender_ratio;
         $share->jp_ov_ratio = $request->jp_ov_ratio;
         $share->age_ratio = $request->age_ratio;
-        $share->save();
-        return redirect()->route('shares.index');
     }
 }
