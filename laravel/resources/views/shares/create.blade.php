@@ -4,7 +4,7 @@
 
 @section('content')
 
-    @include('common.users.nav')
+    @include('common.auth.nav')
 
     <div class="shares-content">
         <div class="container">
@@ -112,12 +112,6 @@
                             <dt class="shares-create-item-title">築年数</dt>
                             <dd class="shares-create-item-input">
                                 <input class="js-require" type="text" name="build_age" placeholder="築年数">
-                            </dd>
-                        </div>
-                        <div class="shares-create-item">
-                            <dt class="shares-create-item-title">マネージャーID</dt>
-                            <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="admin_users_id" placeholder="築年数">
                             </dd>
                         </div>
                         <div class="shares-create-item">

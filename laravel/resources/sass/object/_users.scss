@@ -3,14 +3,6 @@
     justify-content: center;
     align-items: center;
 }
-
-//.shares-user-container {
-//    position: absolute;
-//    top: 50%;
-//    left: 50%;
-//    transform: translateY(-50%) translateX(-50%);
-//}
-
 .users-header {
     background-color: white;
     font-size: 24px;
@@ -57,4 +49,16 @@
 
 .login-rm {
     padding-right: 15px;
+}
+
+.login-color {
+    background-image: linear-gradient(to right, #00f2fe 0%, #4facfe 100%);
+}
+
+.reg-color {
+    background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+}
+
+.user-share-bg {
+    background-color: $gray-200;
 }
