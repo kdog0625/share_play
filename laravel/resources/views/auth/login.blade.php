@@ -52,19 +52,23 @@
                                     </div>
                                 </div>
 
-                                <button class="btn btn-block blue-gradient p-3 mt-3" type="submit">ログイン</button>
+                                <button class="btn btn-block login-color text-white p-3 mt-3" type="submit">ログイン</button>
 
-                                <a href="#" class="btn btn-default btn-block p-3 mt-3">
+                                <a href="#" class="btn btn-default btn-block text-white p-3 mt-3">
                                     かんたんログインはこちら
                                 </a>
                             </form>
                         </div>
                     </div>
-                    <a href="{{ route('register') }}" class="btn btn-default btn-block p-3 mt-5">
-                        アカウント作成はこちら
+                    <a href="{{ route('register') }}" class="btn btn-default btn-block reg-color text-white p-3 mt-5">
+                        一般の方のアカウント作成はこちら
                     </a>
 
-                    <a href="#" class="btn btn-default btn-block p-3 mt-3">
+                    <a href="{{ route('admin.login') }}" class="btn btn-default btn-block text-white p-3 mt-3">
+                       管理者のログインはこちら
+                    </a>
+
+                    <a href="#" class="btn btn-block p-3 mt-3 user-share-bg">
                         share playとは
                     </a>
                 </div>
