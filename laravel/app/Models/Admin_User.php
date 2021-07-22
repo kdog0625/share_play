@@ -14,7 +14,7 @@ class Admin_User extends Authenticatable
 
     protected $fillable = [
         'name',
-        'share_admin_id',
+        'share_user_id',
         'name_kanji1',
         'name_kanji2',
         'name_kana1',

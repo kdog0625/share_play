@@ -146,6 +146,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name' => '名前',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
+        'share_user_id' => 'ユーザーID',
+        'name_kanji1' => '氏名(性)',
+        'name_kanji2' => '氏名(名)',
+        'name_kana1' => 'フリガナ(セイ)',
+        'name_kana2' => 'フリガナ(メイ)',
+        'birth_day' => '生年月日',
+        'age' => '年齢',
+        'sex' => '性別',
+        'area_country' => '在住地域',
+        'prefecture_name' => '都道府県名',
+        'tel' => '電話番号',
+    ],
 
 ];
