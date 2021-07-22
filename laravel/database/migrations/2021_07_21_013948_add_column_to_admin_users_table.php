@@ -14,7 +14,7 @@ class AddColumnToAdminUsersTable extends Migration
     public function up()
     {
         Schema::table('admin_users', function (Blueprint $table) {
-            $table->String('share_admin_id',25)->nullable(false)->comment('ユーザーID');
+            $table->String('share_user_id',25)->nullable(false)->comment('ユーザーID');
             $table->String('name_kanji1',25)->nullable(false)->comment('氏名(性)');
             $table->String('name_kanji2',25)->nullable(false)->comment('氏名(名)');
             $table->String('name_kana1',25)->nullable(false)->comment('フリガナ(セイ)');
