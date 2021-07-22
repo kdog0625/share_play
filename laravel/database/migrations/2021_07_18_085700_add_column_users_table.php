@@ -15,8 +15,8 @@ class AddColumnUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->String('share_user_id', 20)->nullable(false)->comment('自身で決めたユーザーID');
-            $table->String('name_kanji1',25)->nullable(false)->comment('氏名(性)');
-            $table->String('name_kanji2',25)->nullable(false)->comment('氏名(名)');
+            $table->String('name_kanji1',20)->nullable(false)->comment('氏名(性)');
+            $table->String('name_kanji2',20)->nullable(false)->comment('氏名(名)');
             $table->String('name_kana1',25)->nullable(false)->comment('フリガナ(セイ)');
             $table->String('name_kana2',25)->nullable()->comment('フリガナ(メイ)');
             $table->String('birth_day',8)->nullable(false)->comment('氏名(性)');

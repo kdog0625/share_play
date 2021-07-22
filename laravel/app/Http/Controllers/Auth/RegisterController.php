@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\Admin_User;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +51,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:20'],
+            'share_user_id' => ['required', 'string', 'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name_kanji1' => ['required', 'string', 'max:20'],
+            'name_kanji2' => ['required', 'string', 'max:20'],
+            'name_kana1' => ['required', 'string', 'max:25'],
+            'name_kana2' => ['required', 'string', 'max:25'],
+            'birth_day' => ['required', 'string', 'max:8'],
+            'age' => ['required', 'integer'],
+            'sex' => ['required', 'string'],
+            'area_country' => ['required', 'string'],
+            'prefecture_name' => ['required', 'string'],
+            'tel' => ['required', 'string', 'max:12'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
