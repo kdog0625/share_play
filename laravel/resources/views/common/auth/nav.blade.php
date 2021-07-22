@@ -15,15 +15,20 @@
                 @include('common.nav_item')
 
                 @if(Auth::guard('admin')->check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">管理者ページ</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/shares/create">投稿する</a>
                     </li>
-                    <li class="nav-item">
-                        <button form="logout-button" class="nav-link">ログアウト</button>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">管理者ページ</a>
+
+                        <div class="nav-item dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                            <button form="logout-button" class="dropdown-item">ログアウト</button>
+                        </div>
+                        <form id="logout-button" method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                        </form>
                     </li>
-                    <form id="logout-button" method="POST" action="{{ route('admin.logout') }}">
-                        @csrf
-                    </form>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.register') }}">新規登録</a>
