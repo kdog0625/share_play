@@ -13,15 +13,19 @@
                     @csrf
                     <dl class="shares-create-list">
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title mb-3">シェアハウス名</dt>
+                            <dt class="shares-create-item-title">シェアハウス名</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="shara_name" placeholder="シェアハウス名" value="{{ $share->shara_name ?? old('shara_name') }}">
+                                <input id="shara_name" class="js-require @error('shara_name') is-invalid @enderror" type="text" name="shara_name" value="{{ $share->shara_name ?? old('shara_name') }}"  placeholder="シェアハウス名">
+                                @error('shara_name')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
-                        <div class="shares-create-item">
-                            <dt class="shares-create-item-title mb-3">都道府県名</dt>
-                            <dd class="shares-create-item-input share-select">
-                                <select name="prefecture_name" id="js-require">
+                        <div class="shares-create-item form-group">
+                            <dt><label for="exampleFormControlSelect1" class="shares-create-item-title">都道府県名</label></dt>
+                            <dd><select class="select-form shares-create-item-input share-select form-control" name="prefecture_name" id="exampleFormControlSelect1">
                                     <option value="-" selected>選択してください</option>
                                     <option value="北海道">北海道</option>
                                     <option value="青森県">青森県</option>
@@ -69,123 +73,175 @@
                                     <option value="大分県">大分県</option>
                                     <option value="宮崎県">宮崎県</option>
                                     <option value="沖縄県">沖縄県</option>
-                                </select>
+                            </select>
+                                @error('prefecture_name')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">市区町村</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="municipality_name" placeholder="市区町村">
+                                <input id="municipality_name" class="js-require @error('municipality_name') is-invalid @enderror" type="text" name="municipality_name" value="{{ $share->municipality_name ?? old('municipality_name') }}"  placeholder="市区町村">
+                                @error('municipality_name')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">補足住所</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="supplementary_address" placeholder="補足住所">
+                                <input id="supplementary_address" class="js-require @error('supplementary_address') is-invalid @enderror" type="text" name="supplementary_address" value="{{ $share->supplementary_address ?? old('supplementary_address') }}"  placeholder="補足住所">
+                                @error('supplementary_address')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">シェアハウス画像</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="share_picture" placeholder="シェアハウス画像">
+                                <input  id="share_picture" class="js-require @error('share_picture') is-invalid @enderror" type="text" name="share_picture" value="{{ $share->share_picture ?? old('share_picture') }}"  placeholder="シェアハウス画像">
+                                @error('share_picture')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">シェアハウス説明</dt>
                             <dd class="shares-create-item-input">
-                                <textarea name="share_text"  placeholder="シェアハウス説明" required></textarea>
+                                <textarea id="share_text" class="@error('share_text') is-invalid @enderror"  name="share_text" value="{{ $share->share_text ?? old('share_text') }}" placeholder="シェアハウス説明"></textarea>
+                                @error('share_text')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">交流について</dt>
-                            <dd class="shares-create-item-input">
-                                <select name="exchange_about" id="js-require">
-                                    <option value="-" selected>選択してください</option>
-                                    <option value=1>1</option>
-                                    <option value=2>2</option>
-                                    <option value=3>3</option>
-                                    <option value=4>4</option>
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title">交流について</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control @error('exchange_about') is-invalid @enderror" name="exchange_about" id="exampleFormControlSelect1 exchange_about">
+                                    <option value="-" @if(old('exchange_about')=="-") selected @endif>選択してください</option>
+                                    <option value=1 @if(old('exchange_about')==1) selected @endif>1: 日本人との交流が多い</option>
+                                    <option value=2>2: 外国人との交流が多い</option>
+                                    <option value=3>3: 挨拶程度の交流</option>
+                                    <option value=4>4:ほとんど交流なし</option>
                                 </select>
+                                @error('exchange_about')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">築年数</dt>
+                            <dt class="shares-create-item-title mb-2">築年数</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="build_age" placeholder="築年数">
+                                <input id="build_age" class="js-require input-form @error('build_age') is-invalid @enderror" type="text" name="build_age" value="{{ $share->build_age ?? old('build_age') }}" placeholder="築年数">
+                                @error('build_age')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">個室</dt>
-                            <dd class="shares-create-item-input">
-                                <select name="private_room" id="js-require">
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">個室</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control" name="private_room" id="exampleFormControlSelect1">
                                     <option value="-" selected>選択してください</option>
-                                    <option value=4>4</option>
-                                    <option value="4.5畳">4.5畳</option>
-                                    <option value="5畳">5畳</option>
-                                    <option value="5.5畳">5.5畳</option>
-                                    <option value="6畳">6畳</option>
-                                    <option value=" 6.5畳"> 6.5畳</option>
-                                    <option value="7畳">7畳</option>
-                                    <option value="7.5畳">7.5畳</option>
-                                    <option value="8畳">8畳</option>
-                                    <option value="8.5畳">8.5畳</option>
-                                    <option value="9畳,">9畳,</option>
-                                    <option value="9.5畳,">9.5畳,</option>
-                                    <option value="10畳">10畳</option>
-                                    <option value="10.5畳">10.5畳</option>
-                                    <option value="11畳">11畳</option>
-                                    <option value="11.5畳">11.5畳</option>
-                                    <option value="12畳">12畳</option>
-                                    <option value="12.5畳">12.5畳</option>
-                                    <option value="13畳以上">13畳以上</option>
-                                    <option value="個室なし">個室なし</option>
+                                    <option value=4>4畳</option>
+                                    <option value=4.5>4.5畳</option>
+                                    <option value=5>5畳</option>
+                                    <option value=5.5">5.5畳</option>
+                                    <option value=6>6畳</option>
+                                    <option value=6.5> 6.5畳</option>
+                                    <option value=7>7畳</option>
+                                    <option value=7.5>7.5畳</option>
+                                    <option value=8>8畳</option>
+                                    <option value=8.5>8.5畳</option>
+                                    <option value=9>9畳,</option>
+                                    <option value=9.5>9.5畳,</option>
+                                    <option value=10>10畳</option>
+                                    <option value=10.5>10.5畳</option>
+                                    <option value=11>11畳</option>
+                                    <option value=11.5>11.5畳</option>
+                                    <option value=12>12畳</option>
+                                    <option value=12.5>12.5畳</option>
+                                    <option value=13>13畳以上</option>
+                                    <option value=0>個室なし</option>
                                 </select>
+                                @error('private_room')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">ドミトリーについて</dt>
-                            <dd class="shares-create-item-input">
-                                <select name="dormitory_room" id="js-require">
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">ドミトリーについて</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control" name="dormitory_room" id="exampleFormControlSelect1">
                                     <option value="-" selected>選択してください</option>
-                                    <option value=4>4</option>
-                                    <option value="4.5畳">4.5畳</option>
-                                    <option value="5畳">5畳</option>
-                                    <option value="5.5畳">5.5畳</option>
-                                    <option value="6畳">6畳</option>
-                                    <option value=" 6.5畳"> 6.5畳</option>
-                                    <option value="7畳">7畳</option>
-                                    <option value="7.5畳">7.5畳</option>
-                                    <option value="8畳">8畳</option>
-                                    <option value="8.5畳">8.5畳</option>
-                                    <option value="9畳,">9畳,</option>
-                                    <option value="9.5畳,">9.5畳,</option>
-                                    <option value="10畳">10畳</option>
-                                    <option value="10.5畳">10.5畳</option>
-                                    <option value="11畳">11畳</option>
-                                    <option value="11.5畳">11.5畳</option>
-                                    <option value="12畳">12畳</option>
-                                    <option value="12.5畳">12.5畳</option>
-                                    <option value="13畳以上">13畳以上</option>
-                                    <option value="ドミトリーなし">ドミトリーなし</option>
+                                    <option value=4>4畳</option>
+                                    <option value=4.5>4.5畳</option>
+                                    <option value=5>5畳</option>
+                                    <option value=5.5">5.5畳</option>
+                                    <option value=6>6畳</option>
+                                    <option value=6.5> 6.5畳</option>
+                                    <option value=7>7畳</option>
+                                    <option value=7.5>7.5畳</option>
+                                    <option value=8>8畳</option>
+                                    <option value=8.5>8.5畳</option>
+                                    <option value=9>9畳,</option>
+                                    <option value=9.5>9.5畳,</option>
+                                    <option value=10>10畳</option>
+                                    <option value=10.5>10.5畳</option>
+                                    <option value=11>11畳</option>
+                                    <option value=11.5>11.5畳</option>
+                                    <option value=12>12畳</option>
+                                    <option value=12.5>12.5畳</option>
+                                    <option value=13>13畳以上</option>
+                                    <option value=0>ドミトリーなし</option>
                                 </select>
+                                @error('dormitory_room')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">アクセスについて</dt>
+                            <dt class="shares-create-item-title mb-2">アクセスについて</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="access_about" placeholder="アクセスについて">
+                                <textarea id="access_about" class="@error('access_about') is-invalid @enderror"  name="access_about" value="{{ $share->access_about ?? old('access_about') }}" placeholder="アクセスについて"></textarea>
+                                @error('access_about')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">友人の宿泊の有無</dt>
-                            <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="friends_exchange" placeholder="友人の宿泊の有無">
-                            </dd>
-                        </div>
-                        <div class="shares-create-item">
-                            <dt class="shares-create-item-title">友人の宿泊に対する条件</dt>
-                            <dd class="shares-create-item-input">
-                                <select name="friend_desc" id="js-require">
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">友人の宿泊の有無</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control" name="friends_exchange" id="exampleFormControlSelect1">
                                     <option value="-" selected>選択してください</option>
                                     <option value="あり">あり</option>
                                     <option value="なし">なし</option>
@@ -194,21 +250,74 @@
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">男女比率</dt>
+                            <dt class="shares-create-item-title mb-2">友人の宿泊に対する条件</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="gender_ratio" placeholder="男女比率">
+                                <textarea id="friend_desc" class="@error('friend_desc') is-invalid @enderror"  name="friend_desc" value="{{ $share->friend_desc ?? old('friend_desc') }}" placeholder="条件について"></textarea>
+                                @error('friend_desc')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">日本人と外国人の比率</dt>
-                            <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="jp_ov_ratio" placeholder="日本人と外国人の比率">
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">男女比率</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control" name="gender_ratio" id="exampleFormControlSelect1">
+                                    <option value="-" selected>選択してください</option>
+                                    <option value="入居者なし">入居者なし</option>
+                                    <option value="男性:10・女性:0">男性:10・女性:0</option>
+                                    <option value="男性:9・女性:1">男性:9・女性:1</option>
+                                    <option value="男性:8・女性:2">男性:8・女性:2</option>
+                                    <option value="男性:7・女性:3">男性:7・女性:3</option>
+                                    <option value="男性:6・女性:4">男性:6・女性:4</option>
+                                    <option value="男性:5・女性:5">男性:5・女性:5</option>
+                                    <option value="男性:4・女性:6">男性:4・女性:6</option>
+                                    <option value="男性:3・女性:7">男性:3・女性:7</option>
+                                    <option value="男性:2・女性:8">男性:2・女性:8</option>
+                                    <option value="男性:1・女性:9">男性:1・女性:9</option>
+                                    <option value="男性:0・女性:10">男性:0・女性:10</option>
+                                </select>
                             </dd>
                         </div>
                         <div class="shares-create-item">
-                            <dt class="shares-create-item-title">年齢層の比率</dt>
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">日本人と外国人の比率</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control" name="jp_ov_ratio" id="exampleFormControlSelect1">
+                                    <option value="-" selected>選択してください</option>
+                                    <option value="入居者なし">入居者なし</option>
+                                    <option value="日本人:10・外国人:0">日本人:10・外国人:0</option>
+                                    <option value="日本人:9・外国人:1">日本人:9・外国人:1</option>
+                                    <option value="日本人:8・外国人:2">日本人:8・外国人:2</option>
+                                    <option value="日本人:7・外国人:3">日本人:7・外国人:3</option>
+                                    <option value="日本人:6・外国人:4">日本人:6・外国人:4</option>
+                                    <option value="日本人:5・外国人:5">日本人:5・外国人:5</option>
+                                    <option value="日本人:4・外国人:6">日本人:4・外国人:6</option>
+                                    <option value="日本人:3・外国人:7">日本人:3・外国人:7</option>
+                                    <option value="日本人:2・外国人:8">日本人:2・外国人:8</option>
+                                    <option value="日本人:1・外国人:9">日本人:1・外国人:9</option>
+                                    <option value="日本人:0・外国人:10">日本人:0・外国人:10</option>
+                                </select>
+                                @error('jp_ov_ratio')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
+                            </dd>
+                        </div>
+                        <div class="shares-create-item">
+                            <dt class="shares-create-item-title mb-2">年齢層の比率</dt>
                             <dd class="shares-create-item-input">
-                                <input class="js-require" type="text" name="age_ratio" placeholder="交流について">
+                                <input id="age_ratio" type="text" class="input-form @error('age_ratio') is-invalid @enderror" name="age_ratio" value="{{ $share->age_ratio ?? old('age_ratio') }}" autocomplete="age_ratio" autofocus placeholder="年齢層について">
+                                @error('age_ratio')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                     </dl>
