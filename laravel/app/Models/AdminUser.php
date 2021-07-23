@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Admin_User extends Authenticatable
+class AdminUser extends Authenticatable
 {
     use HasFactory, Notifiable;
     protected $table = 'admin_users';

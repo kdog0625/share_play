@@ -56,7 +56,8 @@ class LoginController extends Controller
     }
 
     // 管理者設定
-    protected function guard(){
+    protected function guard()
+    {
         return Auth::guard('admin');
     }
 

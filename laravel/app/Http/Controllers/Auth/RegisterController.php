@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin_User;
+use App\Models\AdminUser;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -53,7 +53,8 @@ class RegisterController extends Controller
         //バリデーションルールを定義
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:20'],
-            'share_user_id' => ['required', 'string', 'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
+            'share_user_id' => ['required', 'string',
+                'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'name_kanji1' => ['required', 'string', 'max:20'],
             'name_kanji2' => ['required', 'string', 'max:20'],

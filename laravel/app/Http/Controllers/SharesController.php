@@ -16,7 +16,8 @@ class SharesController extends Controller
      * @return Application|Factory|View
      */
 
-    public function index() {
+    public function index()
+    {
         $shares = Share::all()->sortByDesc('created_at');
         return view('shares.index', ['shares' => $shares]);
     }
@@ -25,7 +26,8 @@ class SharesController extends Controller
      * 新規投稿フォームの表示
      * @return Application|Factory|View
      */
-    public function create() {
+    public function create()
+    {
         return view('shares.create');
     }
 
@@ -60,7 +62,7 @@ class SharesController extends Controller
      */
     public function update(ShareRequest $request, Share $share)
     {
-        $this->shares_create_colum($share, $request);
+        $this->sharescreatecolum($share, $request);
         $share->save();
         return redirect()->route('admin.admin_home');
     }
@@ -82,7 +84,8 @@ class SharesController extends Controller
      * @param $request
      * @return void
      */
-    public function shares_create_colum($share, $request) {
+    public function sharescreatecolum($share, $request)
+    {
         $share->fill($request->all());
         $share->admin_users_id = $request->user()->id;
     }

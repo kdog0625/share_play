@@ -35,6 +35,6 @@ class Share extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Model\Admin_User');
+        return $this->belongsTo('App\Model\AdminUser');
     }
 }
