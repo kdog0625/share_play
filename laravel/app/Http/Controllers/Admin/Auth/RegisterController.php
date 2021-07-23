@@ -51,6 +51,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //バリデーションルールを定義
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:20'],
             'share_user_id' => ['required', 'string', 'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
@@ -73,7 +74,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\Admin_User
+     * @return Admin_User
      */
     protected function create(array $data)
     {

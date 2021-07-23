@@ -38,7 +38,6 @@ class AddColumnToAdminUsersTable extends Migration
     public function down()
     {
         Schema::table('admin_users', function (Blueprint $table) {
-            //
         });
     }
 }

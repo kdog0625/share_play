@@ -53,7 +53,7 @@
                             <tr class="user-tr d-flex row col-md-12 align-items-center">
                                 <th class="user-border-right col-md-3 col-sm-12">氏名</th>
                                 <td class="col-md-9 user-input col-sm-12">
-                                    <input id="name_kanji1" type="text" class="form-control @error('name_kanji1') is-invalid @enderror" name="name_kanji1" value="{{ old('name_kanji1') }}"  autocomplete="name_kanji1" placeholder="氏名(性)">
+                                    <input id="name_kanji1" type="text" class="form-control mb-2 @error('name_kanji1') is-invalid @enderror" name="name_kanji1" value="{{ old('name_kanji1') }}"  autocomplete="name_kanji1" placeholder="氏名(性)">
                                     @error('name_kanji1')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                             <tr class="user-tr d-flex row col-md-12 align-items-center">
                                 <th class="user-border-right col-md-3">フリガナ</th>
                                 <td class="col-md-9 user-input">
-                                    <input id="name_kana1" type="text" class="form-control @error('name_kana1') is-invalid @enderror" name="name_kana1" value="{{ old('name_kana1') }}"  autocomplete="name_kana1" placeholder="フリガナ(セイ)">
+                                    <input id="name_kana1" type="text" class="form-control mb-2 @error('name_kana1') is-invalid @enderror" name="name_kana1" value="{{ old('name_kana1') }}"  autocomplete="name_kana1" placeholder="フリガナ(セイ)">
                                     @error('name_kana1')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
