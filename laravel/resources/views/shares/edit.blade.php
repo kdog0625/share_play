@@ -24,8 +24,11 @@
                             </dd>
                         </div>
                         <div class="shares-create-item form-group">
-                            <dt><label for="exampleFormControlSelect1" class="shares-create-item-title">都道府県名</label></dt>
-                            <dd><select class="select-form shares-create-item-input share-select form-control @error('prefecture_name') is-invalid @enderror" name="prefecture_name" id="exampleFormControlSelect1 prefecture_name">
+                            <dt>
+                                <label for="exampleFormControlSelect1" class="shares-create-item-title">都道府県名</label>
+                            </dt>
+                            <dd>
+                                <select class="select-form shares-create-item-input share-select form-control @error('prefecture_name') is-invalid @enderror" name="prefecture_name" id="exampleFormControlSelect1 prefecture_name">
                                     <option value="" selected>選択してください</option>
                                     <option value="北海道">北海道</option>
                                     <option value="青森県">青森県</option>
@@ -73,7 +76,7 @@
                                     <option value="大分県">大分県</option>
                                     <option value="宮崎県">宮崎県</option>
                                     <option value="沖縄県">沖縄県</option>
-                            </select>
+                                </select>
                                 @error('prefecture_name')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Share;
-
 use App\Http\Requests\ShareRequest;
 
 class SharesController extends Controller
