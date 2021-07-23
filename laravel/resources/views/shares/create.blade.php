@@ -25,8 +25,8 @@
                         </div>
                         <div class="shares-create-item form-group">
                             <dt><label for="exampleFormControlSelect1" class="shares-create-item-title">都道府県名</label></dt>
-                            <dd><select class="select-form shares-create-item-input share-select form-control" name="prefecture_name" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                            <dd><select class="select-form shares-create-item-input share-select form-control @error('prefecture_name') is-invalid @enderror" name="prefecture_name" id="exampleFormControlSelect1 prefecture_name">
+                                    <option value="" selected>選択してください</option>
                                     <option value="北海道">北海道</option>
                                     <option value="青森県">青森県</option>
                                     <option value="岩手県">岩手県</option>
@@ -106,7 +106,7 @@
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">シェアハウス画像</dt>
                             <dd class="shares-create-item-input">
-                                <input  id="share_picture" class="js-require @error('share_picture') is-invalid @enderror" type="text" name="share_picture" value="{{ old('share_picture') }}"  placeholder="シェアハウス画像">
+                                <input id="share_picture" class="js-require @error('share_picture') is-invalid @enderror" type="text" name="share_picture" value="{{ old('share_picture') }}" placeholder="シェアハウス画像">
                                 @error('share_picture')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -117,7 +117,7 @@
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title">シェアハウス説明</dt>
                             <dd class="shares-create-item-input">
-                                <textarea id="share_text" class="@error('share_text') is-invalid @enderror"  name="share_text" value="{{ old('share_text') }}" placeholder="シェアハウス説明"></textarea>
+                                <textarea id="share_text" class="@error('share_text') is-invalid @enderror" name="share_text" value="{{ old('share_text') }}" placeholder="シェアハウス説明"></textarea>
                                 @error('share_text')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -131,8 +131,8 @@
                             </dt>
                             <dd>
                                 <select class="select-form shares-create-item-input share-select form-control @error('exchange_about') is-invalid @enderror" name="exchange_about" id="exampleFormControlSelect1 exchange_about">
-                                    <option value="-" @if(old('exchange_about')=="-") selected @endif>選択してください</option>
-                                    <option value=1 @if(old('exchange_about')==1) selected @endif>1: 日本人との交流が多い</option>
+                                    <option value="">選択してください</option>
+                                    <option value=1>1: 日本人との交流が多い</option>
                                     <option value=2>2: 外国人との交流が多い</option>
                                     <option value=3>3: 挨拶程度の交流</option>
                                     <option value=4>4:ほとんど交流なし</option>
@@ -160,8 +160,8 @@
                                 <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">個室</label>
                             </dt>
                             <dd>
-                                <select class="select-form shares-create-item-input share-select form-control" name="private_room" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                                <select class="select-form shares-create-item-input share-select form-control @error('private_room') is-invalid @enderror" name="private_room" id="exampleFormControlSelect1 private_room">
+                                    <option value="" selected>選択してください</option>
                                     <option value=4>4畳</option>
                                     <option value=4.5>4.5畳</option>
                                     <option value=5>5畳</option>
@@ -195,8 +195,8 @@
                                 <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">ドミトリーについて</label>
                             </dt>
                             <dd>
-                                <select class="select-form shares-create-item-input share-select form-control" name="dormitory_room" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                                <select class="select-form shares-create-item-input share-select form-control @error('dormitory_room') is-invalid @enderror" name="dormitory_room" id="exampleFormControlSelect1 dormitory_room">
+                                    <option value="" selected>選択してください</option>
                                     <option value=4>4畳</option>
                                     <option value=4.5>4.5畳</option>
                                     <option value=5>5畳</option>
@@ -228,7 +228,7 @@
                         <div class="shares-create-item">
                             <dt class="shares-create-item-title mb-2">アクセスについて</dt>
                             <dd class="shares-create-item-input">
-                                <textarea id="access_about" class="@error('access_about') is-invalid @enderror"  name="access_about" value="{{ old('access_about') }}" placeholder="アクセスについて"></textarea>
+                                <textarea id="access_about" class="@error('access_about') is-invalid @enderror" name="access_about" value="{{ old('access_about') }}" placeholder="アクセスについて"></textarea>
                                 @error('access_about')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -241,12 +241,17 @@
                                 <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">友人の宿泊の有無</label>
                             </dt>
                             <dd>
-                                <select class="select-form shares-create-item-input share-select form-control" name="friends_exchange" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                                <select class="select-form shares-create-item-input share-select form-control @error('friends_exchange') is-invalid @enderror" name="friends_exchange" id="exampleFormControlSelect1 friends_exchange">
+                                    <option value="" selected>選択してください</option>
                                     <option value="あり">あり</option>
                                     <option value="なし">なし</option>
                                     <option value="条件付きであり">条件付きであり</option>
                                 </select>
+                                @error('friends_exchange')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
@@ -265,8 +270,8 @@
                                 <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">男女比率</label>
                             </dt>
                             <dd>
-                                <select class="select-form shares-create-item-input share-select form-control" name="gender_ratio" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                                <select class="select-form shares-create-item-input share-select form-control @error('gender_ratio') is-invalid @enderror" name="gender_ratio" id="exampleFormControlSelect1 gender_ratio">
+                                    <option value="" selected>選択してください</option>
                                     <option value="入居者なし">入居者なし</option>
                                     <option value="男性:10・女性:0">男性:10・女性:0</option>
                                     <option value="男性:9・女性:1">男性:9・女性:1</option>
@@ -280,6 +285,11 @@
                                     <option value="男性:1・女性:9">男性:1・女性:9</option>
                                     <option value="男性:0・女性:10">男性:0・女性:10</option>
                                 </select>
+                                @error('gender_ratio')
+                                <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                            </span>
+                                @enderror
                             </dd>
                         </div>
                         <div class="shares-create-item">
@@ -287,8 +297,8 @@
                                 <label for="exampleFormControlSelect1" class="shares-create-item-title mb-2">日本人と外国人の比率</label>
                             </dt>
                             <dd>
-                                <select class="select-form shares-create-item-input share-select form-control" name="jp_ov_ratio" id="exampleFormControlSelect1">
-                                    <option value="-" selected>選択してください</option>
+                                <select class="select-form shares-create-item-input share-select form-control @error('jp_ov_ratio') is-invalid @enderror" name="jp_ov_ratio" id="exampleFormControlSelect1 jp_ov_ratio">
+                                    <option value="" selected>選択してください</option>
                                     <option value="入居者なし">入居者なし</option>
                                     <option value="日本人:10・外国人:0">日本人:10・外国人:0</option>
                                     <option value="日本人:9・外国人:1">日本人:9・外国人:1</option>

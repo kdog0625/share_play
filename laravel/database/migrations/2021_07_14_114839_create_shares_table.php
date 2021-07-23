@@ -27,11 +27,11 @@ class CreateSharesTable extends Migration
             $table->smallInteger('private_room')->nullable(false)->comment('個室')->nullable(false)->comment('公開ステータス(1: 4畳 /2 :4.5畳 /3: 5畳 /4: 5.5畳 /5: 6畳 /6: 6.5畳 /7: 7畳 /8: 7.5畳 /9: 8畳 /10: 8.5畳 /11: 9畳 /12: 9.5畳 /13: 10畳 /14: 10.5畳 /15: 11畳 /16: 11.5畳 /17: 12畳 /18: 12.5畳 /19: 13畳以上 /20: 個室なし)');
             $table->smallInteger('dormitory_room')->nullable(false)->comment('ドミトリールーム')->nullable(false)->comment('公開ステータス(1: 4畳 /2 :4.5畳 /3: 5畳 /4: 5.5畳 /5: 6畳 /6: 6.5畳 /7: 7畳 /8: 7.5畳 /9: 8畳 /10: 8.5畳 /11: 9畳 /12: 9.5畳 /13: 10畳 /14: 10.5畳 /15: 11畳 /16: 11.5畳 /17: 12畳 /18: 12.5畳 /19: 13畳以上 /20: ドミトリーなし)');
             $table->string('access_about', 255)->nullable(false)->comment('アクセスについて');
-            $table->integer('friends_exchange')->nullable(false)->comment('友人の宿泊の有無')->nullable(false)->comment('公開ステータス(1:あり /2:なし /3:条件付きであり)');
+            $table->string('friends_exchange')->nullable(false)->comment('友人の宿泊の有無')->nullable(false)->comment('公開ステータス(1:あり /2:なし /3:条件付きであり)');
             $table->string('friend_desc', 255)->nullable()->comment('友人の宿泊に対する条件');
-            $table->string('gender_ratio', 10)->nullable(false)->comment('男女比率');
-            $table->string('jp_ov_ratio', 10)->nullable(false)->comment('日本人と外国人の比率');
-            $table->string('age_ratio', 10)->nullable(false)->comment('年齢層の比率');
+            $table->string('gender_ratio', 20)->nullable(false)->comment('男女比率');
+            $table->string('jp_ov_ratio', 20)->nullable(false)->comment('日本人と外国人の比率');
+            $table->string('age_ratio', 20)->nullable(false)->comment('年齢層の比率');
 
             $table->timestamps();
         });

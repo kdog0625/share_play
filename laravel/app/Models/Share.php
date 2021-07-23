@@ -20,6 +20,7 @@ class Share extends Model
         'municipality_name',
         'supplementary_address',
         'share_picture',
+        'share_text',
         'exchange_about',
         'build_age',
         'private_room',
