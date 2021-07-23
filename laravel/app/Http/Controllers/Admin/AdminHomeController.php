@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Models\Share;
+use Illuminate\Contracts\Support\Renderable;
 
 class AdminHomeController extends Controller
 {
@@ -20,8 +21,8 @@ class AdminHomeController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * 管理者のトップページ
+     * @return Renderable
      */
     public function index()
     {
