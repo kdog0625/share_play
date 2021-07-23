@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'share play トップページ')
+@section('title', 'share play 投稿ページ')
 
 @section('content')
 

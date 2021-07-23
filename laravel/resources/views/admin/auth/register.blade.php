@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'ユーザー登録画面')
+@section('title', '管理者登録画面')
 
 @section('content')
 
