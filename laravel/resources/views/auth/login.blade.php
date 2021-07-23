@@ -65,7 +65,7 @@
                     </a>
 
                     <a href="{{ route('admin.login') }}" class="btn btn-default btn-block text-white p-3 mt-3">
-                       管理者のログインはこちら
+                        管理者のログインはこちら
                     </a>
 
                     <a href="#" class="btn btn-block p-3 mt-3 user-share-bg">

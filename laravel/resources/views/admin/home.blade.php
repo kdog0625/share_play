@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', 'share play トップページ')
+@section('title', 'share play 管理者トップページ')
 
 @section('content')
 
@@ -38,12 +38,12 @@
                             <td class="text-center">{{ $share->updated_at }}</td>
                             <td class="text-center">
                                 <div class="d-flex">
-                                <a class="" href="{{ route('shares.edit', ['share' => $share]) }}">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a class="ml-auto" href="{{ route('shares.destroy', ['share' => $share]) }}">
-                                    <i class="fa fa-trash"></i>
-                                </a>
+                                    <a class="" href="{{ route('shares.edit', ['share' => $share]) }}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="ml-auto" href="{{ route('shares.destroy', ['share' => $share]) }}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
