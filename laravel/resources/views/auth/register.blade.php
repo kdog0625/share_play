@@ -53,7 +53,7 @@
                             <tr class="user-tr d-flex row col-md-12 align-items-center">
                                 <th class="user-border-right col-md-3 col-sm-12">氏名</th>
                                 <td class="col-md-9 user-input col-sm-12">
-                                    <input id="name_kanji1" type="text" class="form-control @error('name_kanji1') is-invalid @enderror" name="name_kanji1" value="{{ old('name_kanji1') }}"  autocomplete="name_kanji1" placeholder="氏名(性)">
+                                    <input id="name_kanji1" type="text" class="form-control mb-2 @error('name_kanji1') is-invalid @enderror" name="name_kanji1" value="{{ old('name_kanji1') }}"  autocomplete="name_kanji1" placeholder="氏名(性)">
                                     @error('name_kanji1')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -70,7 +70,7 @@
                             <tr class="user-tr d-flex row col-md-12 align-items-center">
                                 <th class="user-border-right col-md-3">フリガナ</th>
                                 <td class="col-md-9 user-input">
-                                    <input id="name_kana1" type="text" class="form-control @error('name_kana1') is-invalid @enderror" name="name_kana1" value="{{ old('name_kana1') }}"  autocomplete="name_kana1" placeholder="フリガナ(セイ)">
+                                    <input id="name_kana1" type="text" class="form-control mb-2 @error('name_kana1') is-invalid @enderror" name="name_kana1" value="{{ old('name_kana1') }}"  autocomplete="name_kana1" placeholder="フリガナ(セイ)">
                                     @error('name_kana1')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -174,11 +174,14 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="form-group row mb-3 col-md-12 d-flex align-items-center">
-                            <button class="btn btn-block reg-color text-white p-3 mt-3 col-md-5 col-sm-12" type="submit">新規会員登録</button>
-                            <a href="{{ route('login') }}" class="btn btn-default btn-block login-color text-white p-3 mt-3 ml-auto col-md-5 col-sm-12">
-                                ログインはこちら
-                            </a>
+
+                        <div class="form-group row mb-3">
+                            <div class="col-md-12 d-flex align-items-center">
+                                <button class="btn btn-block reg-color text-white p-3 mt-3 col-md-5" type="submit">新規会員登録</button>
+                                <a href="{{ route('admin.login') }}" class="btn btn-default login-color text-white btn-block p-3 mt-3 ml-auto col-md-5">
+                                    ログインはこちら
+                                </a>
+                            </div>
                         </div>
                     </form>
                 </div>
