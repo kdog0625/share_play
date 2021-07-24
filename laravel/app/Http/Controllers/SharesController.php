@@ -22,8 +22,6 @@ class SharesController extends Controller
         $this->sharesService = $sharesService;
     }
 
-
-
     /**
      * シェアハウスの投稿一覧の表示
      * @return Application|Factory|View
@@ -51,7 +49,7 @@ class SharesController extends Controller
      * @param Share $share
      * @return RedirectResponse
      */
-    public function store(ShareRequest $request, Share $share)
+    public function store(ShareRequest $request, Share $share): RedirectResponse
     {
         $this->sharesService->sharesCreate($share, $request);
         $share->save();
@@ -74,7 +72,7 @@ class SharesController extends Controller
      * @param Share $share
      * @return RedirectResponse
      */
-    public function update(ShareRequest $request, Share $share)
+    public function update(ShareRequest $request, Share $share): RedirectResponse
     {
         $this->sharesService->sharesCreate($share, $request);
         $share->save();
@@ -86,7 +84,7 @@ class SharesController extends Controller
      * @param Share $share
      * @return RedirectResponse
      */
-    public function destroy(Share $share)
+    public function destroy(Share $share): RedirectResponse
     {
         $share->delete();
         return redirect()->route('admins.home');

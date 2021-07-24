@@ -2,7 +2,6 @@
 namespace App\Services;
 
 use App\Models\Share;
-use Illuminate\Support\Facades\Log;
 
 class SharesService
 {
@@ -13,6 +12,7 @@ class SharesService
 
     /**
      * シェアハウスを登録するデータのまとめ
+     *
      * @param $share
      * @param $request
      * @return void

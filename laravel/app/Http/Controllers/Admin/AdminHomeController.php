@@ -24,7 +24,7 @@ class AdminHomeController extends Controller
      * 管理者のトップページ
      * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
         $admin_shares = Share::all()->sortByDesc('created_at');
         return view('admin.home', ['admin_shares'=>$admin_shares]);

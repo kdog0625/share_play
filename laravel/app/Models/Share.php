@@ -33,7 +33,7 @@ class Share extends Model
         'age_ratio',
     ];
 
-    public function user()
+    public function adminUser(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo('App\Model\AdminUser');
     }
