@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\AdminUser;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -43,35 +42,33 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * requestバリデーション
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-        //バリデーションルールを定義
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'share_user_id' => ['required', 'string',
-                'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'name_kanji1' => ['required', 'string', 'max:20'],
-            'name_kanji2' => ['required', 'string', 'max:20'],
-            'name_kana1' => ['required', 'string', 'max:25'],
-            'name_kana2' => ['required', 'string', 'max:25'],
-            'birth_day' => ['required', 'string', 'max:8'],
-            'age' => ['required', 'integer'],
-            'sex' => ['required', 'string'],
-            'area_country' => ['required', 'string'],
-            'prefecture_name' => ['required', 'string'],
-            'tel' => ['required', 'string', 'max:12'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => User::NAME_RULE,
+            'share_user_id' => User::SHARE_USER_ID,
+            'email' => User::EMAIL,
+            'name_kanji1' => User::NAME_KANJI1,
+            'name_kanji2' => User::NAME_KANJI2,
+            'name_kana1' => User::NAME_KANA1,
+            'name_kana2' => User::NAME_KANA2,
+            'birth_day' => User::BIRTH_DAY,
+            'age' => User::AGE,
+            'sex' => User::SEX,
+            'area_country' => User::AREA_COUNTRY,
+            'prefecture_name' => User::PREFECTURE_NAME,
+            'tel' => User::TEL,
+            'password' => User::PASSWORD,
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * 一般ユーザー登録
      *
      * @param  array  $data
      * @return User
