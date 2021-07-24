@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Share;
 use App\Http\Requests\ShareRequest;
+use App\Services\SharesService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -12,13 +13,26 @@ use Illuminate\Http\RedirectResponse;
 class SharesController extends Controller
 {
     /**
+     * @var SharesService
+     */
+    private $sharesService;
+
+    public function __construct(SharesService $sharesService)
+    {
+        $this->sharesService = $sharesService;
+    }
+
+
+
+    /**
      * シェアハウスの投稿一覧の表示
      * @return Application|Factory|View
      */
 
     public function index()
     {
-        $shares = Share::all()->sortByDesc('created_at');
+        $this->middleware('auth');
+        $shares = $this->sharesService->list();
         return view('shares.index', ['shares' => $shares]);
     }
 
@@ -39,7 +53,7 @@ class SharesController extends Controller
      */
     public function store(ShareRequest $request, Share $share)
     {
-        $this->shares_create_colum($share, $request);
+        $this->sharesService->sharesCreate($share, $request);
         $share->save();
         return redirect()->route('admin.admin_home');
     }
@@ -62,7 +76,7 @@ class SharesController extends Controller
      */
     public function update(ShareRequest $request, Share $share)
     {
-        $this->sharescreatecolum($share, $request);
+        $this->sharesService->sharesCreate($share, $request);
         $share->save();
         return redirect()->route('admin.admin_home');
     }
@@ -76,17 +90,5 @@ class SharesController extends Controller
     {
         $share->delete();
         return redirect()->route('admins.home');
-    }
-
-    /**
-     * シェアハウスを登録するデータのまとめ
-     * @param $share
-     * @param $request
-     * @return void
-     */
-    public function sharescreatecolum($share, $request)
-    {
-        $share->fill($request->all());
-        $share->admin_users_id = $request->user()->id;
     }
 }
