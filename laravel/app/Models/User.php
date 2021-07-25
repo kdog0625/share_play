@@ -30,23 +30,8 @@ class User extends Authenticatable
     const TEL = 'required|max:12'; //電話番号
     const PASSWORD = 'required|min:8|confirmed'; //パスワード
 
-    protected $fillable = [
-        'name',
-        'share_user_id',
-        'name_kanji1',
-        'name_kanji2',
-        'name_kana1',
-        'name_kana2',
-        'birth_day',
-        'age',
-        'sex',
-        'area_country',
-        'prefecture_name',
-        'tel',
-        'profile_image',
-        'profile_text',
-        'email',
-        'password',
+    protected $guarded = [
+        'id'
     ];
 
     protected $hidden = [
