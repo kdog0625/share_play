@@ -29,7 +29,6 @@ class SharesController extends Controller
 
     public function index()
     {
-        $this->middleware('auth');
         $shares = $this->sharesService->list();
         return view('shares.index', ['shares' => $shares]);
     }
