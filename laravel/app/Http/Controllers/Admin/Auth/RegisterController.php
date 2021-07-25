@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -72,26 +71,11 @@ class RegisterController extends Controller
      * 管理者登録
      *
      * @param  array  $data
-     * @return AdminUser
+     * @return void
      */
-    protected function create(array $data): AdminUser
+    protected function create(array $data)
     {
-        return AdminUser::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'share_user_id' => $data['share_user_id'],
-            'password' => Hash::make($data['password']),
-            'name_kanji1' => $data['name_kanji1'],
-            'name_kanji2' => $data['name_kanji2'],
-            'name_kana1' => $data['name_kana1'],
-            'name_kana2' => $data['name_kana2'],
-            'birth_day' => $data['birth_day'],
-            'age' => $data['age'],
-            'sex' => $data['sex'],
-            'area_country' => $data['area_country'],
-            'prefecture_name' => $data['prefecture_name'],
-            'tel' => $data['tel'],
-        ]);
+        return (new AdminUser())->administer($data);
     }
 
     public function showRegistrationForm()
