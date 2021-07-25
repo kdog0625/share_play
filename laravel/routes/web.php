@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::get('/', 'SharesController@index')->name('shares.index');
 Route::resource('/shares', 'SharesController')->except(['index'])->middleware('auth:admin');
 
 //管理者用のルーティング
-Route::prefix('admin')->namespace('admin')->name('admin.')->group(function(){
+Route::prefix('admin')->namespace('admin')->name('admin.')->group(function () {
     //管理者のユーザー新規登録、ログイン、ログアウト
     Auth::routes();
     Route::get('/home', 'AdminHomeController@index')->name('admin_home');

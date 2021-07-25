@@ -7,7 +7,7 @@ class SharesService
 {
     public function list()
     {
-        return  Share::all()->sortByDesc('created_at');
+        return Share::all()->sortByDesc('created_at');
     }
 
     /**
