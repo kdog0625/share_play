@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Redirector;
@@ -47,7 +48,7 @@ class LoginController extends Controller
     /**
      * 管理者のログインページにリダイレクトさせる
      *
-     * @return Application
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
      * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
      */
     public function showLoginForm()
@@ -65,7 +66,7 @@ class LoginController extends Controller
      * ユーザーをログアウトさせる
      *
      * @param Request $request
-     * @return Application|RedirectResponse|Redirector
+     * @return \Illuminate\Contracts\Foundation\Application|Redirector|RedirectResponse
      * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
      */
     protected function loggedOut(Request $request)
