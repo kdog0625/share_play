@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Share;
+use App\Services\SharesService;
 use Illuminate\Contracts\Support\Renderable;
 
 /**
@@ -18,8 +18,12 @@ class AdminHomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    private $sharesService;
+
+    public function __construct(SharesService $sharesService)
     {
+        $this->sharesService = $sharesService;
         $this->middleware('auth:admin');
     }
 
@@ -29,7 +33,7 @@ class AdminHomeController extends Controller
      */
     public function index(): Renderable
     {
-        $admin_shares = Share::all()->sortByDesc('created_at');
+        $admin_shares = $this->sharesService->list();
         return view('admin.home', ['admin_shares'=>$admin_shares]);
     }
 }
