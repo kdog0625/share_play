@@ -10,6 +10,10 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
+/**
+ * Class SharesController
+ * @package App\Http\Controllers
+ */
 class SharesController extends Controller
 {
     /**
@@ -43,7 +47,8 @@ class SharesController extends Controller
     }
 
     /**
-     * 投稿の登録
+     * シェアハウス投稿の登録
+     *
      * @param ShareRequest $request
      * @param Share $share
      * @return RedirectResponse
@@ -56,7 +61,8 @@ class SharesController extends Controller
     }
 
     /**
-     * 投稿編集フォームの表示
+     * シェアハウス投稿編集フォームの表示
+     *
      * @param Share $share
      * @return Application|Factory|View
      */
@@ -66,7 +72,8 @@ class SharesController extends Controller
     }
 
     /**
-     * 投稿の更新
+     * シェアハウス投稿の更新
+     *
      * @param ShareRequest $request
      * @param Share $share
      * @return RedirectResponse
@@ -79,7 +86,8 @@ class SharesController extends Controller
     }
 
     /**
-     * 投稿の削除
+     * シェアハウス投稿の削除
+     *
      * @param Share $share
      * @return RedirectResponse
      */

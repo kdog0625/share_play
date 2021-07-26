@@ -19,6 +19,9 @@ class Share extends Model
         'id'
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function adminUser(): BelongsTo
     {
         return $this->belongsTo('App\Model\AdminUser');

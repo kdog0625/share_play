@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -12,6 +15,10 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
+/**
+ * Class LoginController
+ * @package App\Http\Controllers\Admin\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -48,7 +55,7 @@ class LoginController extends Controller
     /**
      * 管理者のログインページにリダイレクトさせる
      *
-     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
+     * @return Application|Factory|View
      * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
      */
     public function showLoginForm()
@@ -56,7 +63,10 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-    // 管理者設定
+    /**
+     * 管理者の設定
+     * @return Guard|StatefulGuard
+     */
     protected function guard()
     {
         return Auth::guard('admin');
@@ -66,7 +76,7 @@ class LoginController extends Controller
      * ユーザーをログアウトさせる
      *
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|Redirector|RedirectResponse
+     * @return Application|Redirector|RedirectResponse
      * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
      */
     protected function loggedOut(Request $request)

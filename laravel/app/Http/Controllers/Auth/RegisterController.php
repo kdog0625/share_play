@@ -5,11 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers\Auth
+ */
 class RegisterController extends Controller
 {
     /*
@@ -43,7 +45,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * requestバリデーション
+     * 一般ユーザー登録に対するバリデーション
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator

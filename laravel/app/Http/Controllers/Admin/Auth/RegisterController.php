@@ -5,10 +5,19 @@ namespace App\Http\Controllers\Admin\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\AdminUser;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers\Admin\Auth
+ */
 class RegisterController extends Controller
 {
     /*
@@ -42,7 +51,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * requestバリデーション
+     * 管理者登録に対するバリデーション
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -78,11 +87,19 @@ class RegisterController extends Controller
         return (new AdminUser())->administer($data);
     }
 
+    /**
+     * 管理者登録のページを表示
+     * @return Application|Factory|View
+     */
     public function showRegistrationForm()
     {
         return view('admin.auth.register');
     }
 
+    /**
+     * 管理者の認証設定
+     * @return Guard|StatefulGuard
+     */
     protected function guard()
     {
         return Auth::guard('admin');

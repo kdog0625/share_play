@@ -7,6 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Models\Share;
 use Illuminate\Contracts\Support\Renderable;
 
+/**
+ * Class AdminHomeController
+ * @package App\Http\Controllers\Admin
+ */
 class AdminHomeController extends Controller
 {
     /**
@@ -20,8 +24,7 @@ class AdminHomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     * 管理者のトップページ
+     * 管理者の投稿したシェアハウス一覧の取得
      * @return Renderable
      */
     public function index(): Renderable

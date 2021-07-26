@@ -8,6 +8,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class AdminUser
+ * @package App\Models
+ */
 class AdminUser extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -33,18 +37,33 @@ class AdminUser extends Authenticatable
     const TEL = 'required|max:12'; //電話番号
     const PASSWORD = 'required|min:8|confirmed'; //パスワード
 
+    /**
+     * @var string[]
+     */
     protected $guarded = [
         'id'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * 管理者登録に対するトランザクション処理
+     *
+     * @param $data
+     * @return mixed
+     */
     public function administer($data)
     {
         try {

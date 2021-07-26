@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class User
+ * @package App\Models
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
@@ -30,18 +33,33 @@ class User extends Authenticatable
     const TEL = 'required|max:12'; //電話番号
     const PASSWORD = 'required|min:8|confirmed'; //パスワード
 
+    /**
+     * @var string[]
+     */
     protected $guarded = [
         'id'
     ];
 
+    /**
+     * @var string[]
+     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
+    /**
+     * @var string[]
+     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * 一般ユーザー登録に対しるトランザクション処理
+     *
+     * @param $data
+     * @return mixed
+     */
     public function user($data)
     {
         try {
