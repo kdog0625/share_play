@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class ShareRequest
+ * @package App\Http\Requests
+ */
 class ShareRequest extends FormRequest
 {
     /**
@@ -17,7 +21,7 @@ class ShareRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * シェアハウス登録に対するバリデーションの定義
      *
      * @return array
      */
@@ -44,6 +48,10 @@ class ShareRequest extends FormRequest
         ];
     }
 
+    /**
+     * バリデーションの際のエラーメッセージの日本語化
+     * @return string[]
+     */
     public function attributes(): array
     {
         return [
