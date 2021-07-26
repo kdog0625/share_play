@@ -9,14 +9,18 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Class User
+ * Class AdminUser
  * @package App\Models
  */
-class User extends Authenticatable
+class AdminUser extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /** 一般ユーザー登録及びログイン時のバリデーション */
+    protected $table = 'admin_users';
+
+    protected $guard = 'admin';
+
+    /** 管理者登録及びログイン時のバリデーション */
     const NAME_RULE = 'required|max:20'; //名前
     const SHARE_USER_ID =
         'required|min:6|max:20|unique:users|unique:admin_users|regex:/^@[a-zA-Z0-9]+$/'; //ユーザー登録時に設定したID
@@ -55,17 +59,17 @@ class User extends Authenticatable
     ];
 
     /**
-     * 一般ユーザー登録に対しるトランザクション処理
+     * 管理者登録に対するトランザクション処理
      *
      * @param $data
      * @return mixed
      */
-    public function user($data)
+    public function administer($data)
     {
         try {
             DB::beginTransaction();
 
-            $create = User::create([
+            $create = AdminUser::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'share_user_id' => $data['share_user_id'],

@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Share;
+use App\Services\SharesService;
 use Illuminate\Contracts\Support\Renderable;
 
+/**
+ * Class AdminHomeController
+ * @package App\Http\Controllers\Admin
+ */
 class AdminHomeController extends Controller
 {
     /**
@@ -14,19 +18,22 @@ class AdminHomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+
+    private $sharesService;
+
+    public function __construct(SharesService $sharesService)
     {
+        $this->sharesService = $sharesService;
         $this->middleware('auth:admin');
     }
 
     /**
-     * Show the application dashboard.
-     * 管理者のトップページ
+     * 管理者の投稿したシェアハウス一覧の取得
      * @return Renderable
      */
-    public function index()
+    public function index(): Renderable
     {
-        $admin_shares = Share::all()->sortByDesc('created_at');
+        $admin_shares = $this->sharesService->list();
         return view('admin.home', ['admin_shares'=>$admin_shares]);
     }
 }
