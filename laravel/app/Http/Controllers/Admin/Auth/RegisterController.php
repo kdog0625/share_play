@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin_User;
-use App\Models\User;
+use App\Models\AdminUser;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\StatefulGuard;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class RegisterController
+ * @package App\Http\Controllers\Admin\Auth
+ */
 class RegisterController extends Controller
 {
     /*
@@ -31,7 +38,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::Admin;
+    protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
      * Create a new controller instance.
@@ -44,64 +51,57 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * 管理者登録に対するバリデーション
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
-        //バリデーションルールを定義
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:20'],
-            'share_user_id' => ['required', 'string', 'min:6', 'max:20', 'unique:users', 'unique:admin_users', 'regex:/^@[a-zA-Z0-9]+$/'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'name_kanji1' => ['required', 'string', 'max:20'],
-            'name_kanji2' => ['required', 'string', 'max:20'],
-            'name_kana1' => ['required', 'string', 'max:25'],
-            'name_kana2' => ['required', 'string', 'max:25'],
-            'birth_day' => ['required', 'string', 'max:8'],
-            'age' => ['required', 'integer'],
-            'sex' => ['required', 'string'],
-            'area_country' => ['required', 'string'],
-            'prefecture_name' => ['required', 'string'],
-            'tel' => ['required', 'string', 'max:12'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => AdminUser::NAME_RULE,
+            'share_user_id' => AdminUser::SHARE_USER_ID,
+            'email' => AdminUser::EMAIL,
+            'name_kanji1' => AdminUser::NAME_KANJI1,
+            'name_kanji2' => AdminUser::NAME_KANJI2,
+            'name_kana1' => AdminUser::NAME_KANA1,
+            'name_kana2' => AdminUser::NAME_KANA2,
+            'birth_day' => AdminUser::BIRTH_DAY,
+            'age' => AdminUser::AGE,
+            'sex' => AdminUser::SEX,
+            'area_country' => AdminUser::AREA_COUNTRY,
+            'prefecture_name' => AdminUser::PREFECTURE_NAME,
+            'tel' => AdminUser::TEL,
+            'password' => AdminUser::PASSWORD,
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * 管理者登録
      *
      * @param  array  $data
-     * @return Admin_User
+     * @return void
      */
     protected function create(array $data)
     {
-        return Admin_User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'share_user_id' => $data['share_user_id'],
-            'password' => Hash::make($data['password']),
-            'name_kanji1' => $data['name_kanji1'],
-            'name_kanji2' => $data['name_kanji2'],
-            'name_kana1' => $data['name_kana1'],
-            'name_kana2' => $data['name_kana2'],
-            'birth_day' => $data['birth_day'],
-            'age' => $data['age'],
-            'sex' => $data['sex'],
-            'area_country' => $data['area_country'],
-            'prefecture_name' => $data['prefecture_name'],
-            'tel' => $data['tel'],
-        ]);
+        return (new AdminUser())->administer($data);
     }
 
+    /**
+     * 管理者登録のページを表示
+     * @return Application|Factory|View
+     */
     public function showRegistrationForm()
     {
         return view('admin.auth.register');
     }
 
-    protected function guard(){
+    /**
+     * 管理者の認証設定
+     * @return Guard|StatefulGuard
+     */
+    protected function guard()
+    {
         return Auth::guard('admin');
     }
 }
