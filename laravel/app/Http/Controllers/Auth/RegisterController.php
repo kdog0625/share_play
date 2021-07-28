@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 一般ユーザー用のユーザーコントローラー
+ */
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -28,16 +30,13 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * リダイレクト先をトップページに設定
+     * @var string リダイレクト先
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * コンストラクタ
      */
     public function __construct()
     {
@@ -47,8 +46,8 @@ class RegisterController extends Controller
     /**
      * 一般ユーザー登録に対するバリデーション
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param  array  $data 一般ユーザーを登録するデータ
+     * @return \Illuminate\Contracts\Validation\Validator バリデーション
      */
     protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
@@ -73,8 +72,8 @@ class RegisterController extends Controller
     /**
      * 一般ユーザー登録
      *
-     * @param  array  $data
-     * @return User
+     * @param  array  $data 一般ユーザー登録用データ
+     * @return User ユーザー情報
      */
     protected function create(array $data): User
     {

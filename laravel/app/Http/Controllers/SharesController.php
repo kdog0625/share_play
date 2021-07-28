@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * シェアコントローラー
+ */
 namespace App\Http\Controllers;
 
 use App\Models\Share;
@@ -28,7 +30,7 @@ class SharesController extends Controller
 
     /**
      * シェアハウスの投稿一覧の表示
-     * @return Application|Factory|View
+     * @return Application|Factory|View ビュー
      */
 
     public function index()
@@ -39,7 +41,7 @@ class SharesController extends Controller
 
     /**
      * 新規投稿フォームの表示
-     * @return Application|Factory|View
+     * @return Application|Factory|View ビュー
      */
     public function create()
     {
@@ -49,9 +51,9 @@ class SharesController extends Controller
     /**
      * シェアハウス投稿の登録
      *
-     * @param ShareRequest $request
-     * @param Share $share
-     * @return RedirectResponse
+     * @param ShareRequest $request リクエスト
+     * @param Share $share シェアモデル
+     * @return RedirectResponse リダイレクト
      */
     public function store(ShareRequest $request, Share $share): RedirectResponse
     {
@@ -63,8 +65,8 @@ class SharesController extends Controller
     /**
      * シェアハウス投稿編集フォームの表示
      *
-     * @param Share $share
-     * @return Application|Factory|View
+     * @param Share $share シェアモデル
+     * @return Application|Factory|View ビュー
      */
     public function edit(Share $share)
     {
@@ -74,9 +76,9 @@ class SharesController extends Controller
     /**
      * シェアハウス投稿の更新
      *
-     * @param ShareRequest $request
-     * @param Share $share
-     * @return RedirectResponse
+     * @param ShareRequest $request リクエスト
+     * @param Share $share シェアモデル
+     * @return RedirectResponse リダイレクト
      */
     public function update(ShareRequest $request, Share $share): RedirectResponse
     {
@@ -88,8 +90,8 @@ class SharesController extends Controller
     /**
      * シェアハウス投稿の削除
      *
-     * @param Share $share
-     * @return RedirectResponse
+     * @param Share $share シェアモデル
+     * @return RedirectResponse リダイレクト
      */
     public function destroy(Share $share): RedirectResponse
     {

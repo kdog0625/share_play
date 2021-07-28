@@ -1,9 +1,10 @@
 <?php
-
+/**
+ * 管理者トップページコントローラー
+ */
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use App\Services\SharesService;
 use Illuminate\Contracts\Support\Renderable;
 
@@ -29,7 +30,7 @@ class AdminHomeController extends Controller
 
     /**
      * 管理者の投稿したシェアハウス一覧の取得
-     * @return Renderable
+     * @return Renderable 例外処理
      */
     public function index(): Renderable
     {
