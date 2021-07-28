@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * シェアハウス情報登録及び更新用リクエストクラス
+ */
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -11,9 +13,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ShareRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
+     * @return bool true
      */
     public function authorize(): bool
     {
@@ -21,9 +21,9 @@ class ShareRequest extends FormRequest
     }
 
     /**
-     * シェアハウス登録に対するバリデーションの定義
+     * シェアハウス登録及び更新に対するバリデーションの定義
      *
-     * @return array
+     * @return array 登録及び更新データ
      */
     public function rules(): array
     {
@@ -50,7 +50,7 @@ class ShareRequest extends FormRequest
 
     /**
      * バリデーションの際のエラーメッセージの日本語化
-     * @return string[]
+     * @return string[] 日本語化用カラムリスト
      */
     public function attributes(): array
     {

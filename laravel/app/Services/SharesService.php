@@ -21,7 +21,7 @@ class SharesService
     }
 
     /**
-     * シェアハウスを登録するデータのまとめ
+     * シェアハウスの登録、更新に対するデータのまとめ
      *
      * @param $share
      * @param $request
@@ -29,7 +29,6 @@ class SharesService
      */
     public function sharesCreate($share, $request)
     {
-        $share->fill($request->all());
-        $share->admin_users_id = $request->user()->id;
+        return (new Share())->share($share, $request);
     }
 }

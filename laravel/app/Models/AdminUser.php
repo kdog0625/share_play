@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 管理者モデル
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,8 +18,14 @@ class AdminUser extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    /**
+     * @var string admin_usersテーブル
+     */
     protected $table = 'admin_users';
 
+    /**
+     * @var string 管理者に対してアクセス許可をする
+     */
     protected $guard = 'admin';
 
     /** 管理者登録及びログイン時のバリデーション */
@@ -38,21 +46,24 @@ class AdminUser extends Authenticatable
     const PASSWORD = 'required|min:8|confirmed'; //パスワード
 
     /**
-     * @var string[]
+     * idに対して代入を不可とする。
+     * @var string[] id
      */
     protected $guarded = [
         'id'
     ];
 
     /**
-     * @var string[]
+     * モデルを配列/JSON変換する際、表示させたくないカラムを指定
+     * @var string[] password, remember_token
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
     /**
-     * @var string[]
+     * データを自動変換
+     * @var string[] email_verified_at
      */
     protected $casts = [
         'email_verified_at' => 'datetime',

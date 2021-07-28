@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 管理者用のログインコントローラー
+ */
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
@@ -35,28 +37,23 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * リダイレクト先を管理者のトップページに設定
+     * @var string リダイレクト先
      */
     protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * コンストラクタ
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
         $this->middleware('guest:admin')->except('logout');
     }
 
     /**
      * 管理者のログインページにリダイレクトさせる
      *
-     * @return Application|Factory|View
-     * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
+     * @return Application|Factory|View ビュー
      */
     public function showLoginForm()
     {
@@ -65,7 +62,7 @@ class LoginController extends Controller
 
     /**
      * 管理者の設定
-     * @return Guard|StatefulGuard
+     * @return Guard|StatefulGuard 管理者
      */
     protected function guard()
     {
@@ -73,11 +70,10 @@ class LoginController extends Controller
     }
 
     /**
-     * ユーザーをログアウトさせる
+     * 管理者ログアウト
      *
-     * @param Request $request
-     * @return Application|Redirector|RedirectResponse
-     * @override \Illuminate\Http\Foundation\Auth\AuthenticatesUsers
+     * @param Request $request リクエスト
+     * @return Application|RedirectResponse|Redirector リダイレクト
      */
     protected function loggedOut(Request $request)
     {
