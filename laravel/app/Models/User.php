@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 一般ユーザーモデル
+ */
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,21 +36,24 @@ class User extends Authenticatable
     const PASSWORD = 'required|min:8|confirmed'; //パスワード
 
     /**
-     * @var string[]
+     * idに対して代入を不可とする。
+     * @var string[] id
      */
     protected $guarded = [
         'id'
     ];
 
     /**
-     * @var string[]
+     * モデルを配列/JSON変換する際、表示させたくないカラムを指定
+     * @var string[] password, remember_token
      */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
     /**
-     * @var string[]
+     * データを自動変換
+     * @var string[] email_verified_at
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
