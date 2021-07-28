@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 一般ユーザー用のログインコントローラー
+ */
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -26,16 +28,13 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
+     * リダイレクト先をトップページに設定
+     * @var string リダイレクト先
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * コンストラクタ
      */
     public function __construct()
     {

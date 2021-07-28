@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 管理者用のユーザー登録コントローラー
+ */
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
@@ -34,16 +36,13 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * リダイレクト先を管理者のトップページに設定
+     * @var string リダイレクト先
      */
     protected $redirectTo = RouteServiceProvider::ADMIN;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * コンストラクタ
      */
     public function __construct()
     {
@@ -53,8 +52,8 @@ class RegisterController extends Controller
     /**
      * 管理者登録に対するバリデーション
      *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @param  array  $data 管理者登録するデータ
+     * @return \Illuminate\Contracts\Validation\Validator バリデーション
      */
     protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
@@ -79,8 +78,8 @@ class RegisterController extends Controller
     /**
      * 管理者登録
      *
-     * @param  array  $data
-     * @return void
+     * @param  array $data 管理者登録情報
+     * @return void 新規管理者情報
      */
     protected function create(array $data)
     {
@@ -89,7 +88,7 @@ class RegisterController extends Controller
 
     /**
      * 管理者登録のページを表示
-     * @return Application|Factory|View
+     * @return Application|Factory|View ビュー
      */
     public function showRegistrationForm()
     {
@@ -98,7 +97,7 @@ class RegisterController extends Controller
 
     /**
      * 管理者の認証設定
-     * @return Guard|StatefulGuard
+     * @return Guard|StatefulGuard 管理者
      */
     protected function guard()
     {
