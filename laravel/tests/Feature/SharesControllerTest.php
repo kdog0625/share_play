@@ -2,9 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Models\AdminUser;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class SharesControllerTest extends TestCase
@@ -16,7 +18,7 @@ class SharesControllerTest extends TestCase
     /**
      * 未ログイン時
      */
-    public function testIndex()
+    public function testGuestIndex()
     {
         $response = $this->get(route('shares.index'));
 
@@ -39,5 +41,32 @@ class SharesControllerTest extends TestCase
             ->assertViewIs('shares.index')
             ->assertSee('マイページ')
             ->assertSee('ログアウト');
+    }
+
+
+    ### 投稿画面表示機能のテスト ###
+
+    /**
+     *  未ログイン時
+     */
+
+    public function testGuestCreate()
+    {
+        $response = $this->get(route('shares.create'));
+        $response->assertRedirect('login');
+    }
+
+    /**
+     *  ログイン時
+     */
+    public function testAuthCreate()
+    {
+        $adminuser = AdminUser::factory()->create();
+
+        $response = $this->actingAs($adminuser)
+            ->get(route('shares.create'));
+
+        $response->assertStatus(200);
+//            ->assertViewIs('shares.create');
     }
 }
