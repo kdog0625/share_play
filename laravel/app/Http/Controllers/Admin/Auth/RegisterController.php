@@ -13,6 +13,8 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -83,7 +85,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return (new AdminUser())->administer($data);
+        try {
+            DB::beginTransaction();
+            $create = AdminUser::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'share_user_id' => $data['share_user_id'],
+                'password' => Hash::make($data['password']),
+                'name_kanji1' => $data['name_kanji1'],
+                'name_kanji2' => $data['name_kanji2'],
+                'name_kana1' => $data['name_kana1'],
+                'name_kana2' => $data['name_kana2'],
+                'birth_day' => $data['birth_day'],
+                'age' => $data['age'],
+                'sex' => $data['sex'],
+                'area_country' => $data['area_country'],
+                'prefecture_name' => $data['prefecture_name'],
+                'tel' => $data['tel'],
+            ]);
+            DB::commit();
+            return $create;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            exit();
+        }
     }
 
     /**
