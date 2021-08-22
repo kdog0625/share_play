@@ -63,7 +63,7 @@ class SharesControllerTest extends TestCase
     {
         $adminuser = AdminUser::factory()->create();
 
-        $response = $this->actingAs($adminuser)
+        $response = $this->actingAs($adminuser, 'admin')
             ->get(route('shares.create'));
 
         $response->assertStatus(200);
